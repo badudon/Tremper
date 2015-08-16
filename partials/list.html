@@ -1,0 +1,23 @@
+<section class="tremperpage">
+    <div class="search">
+        <h1>Destination</h1>
+        <label>search: </label>
+        <input ng-model="toQuery" placeholder="Search Destination" autofocus>
+    </div>
+    <div class="search">
+        <h1>Origin</h1>
+        <label>search: </label>
+        <input ng-model="fromQuery" placeholder="Search Origin" autofocus>
+    </div>
+    <ul class="tremperlist">
+        <li ng-animate="'animate'" class="tremper cf" ng-repeat="tremper in trempers | filter:{to: toQuery} | filter:{from: fromQuery}">
+            <a href="#/details/{{trempers.indexOf(tremper)}}">
+            <div class="info">
+                <h2>{{tremper.name }}</h2>
+                <h3>{{tremper.from}}</h3>
+                <h3>{{tremper.to | filter: toQuery}}</h3>
+            </div>
+            </a>
+        </li>
+    </ul>
+</section>
