@@ -377,3 +377,31 @@ a.small {
 .select h1 {
     color: #EEE8D5;
 }
+
+.tremper {
+    background: #063642;
+    color: #EEE8D5;
+    width: 90%;
+    min-width: 320px;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 20px;
+    padding: 20px 30px;
+    z-index: 20;
+    text-align: center;
+}
+
+.trempist {
+    background: #063642;
+    color: #EEE8D5;
+    width: 90%;
+    min-width: 320px;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 20px;
+    padding: 20px 30px;
+    z-index: 20;
+    text-align: center;
+}
