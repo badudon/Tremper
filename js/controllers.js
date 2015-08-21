@@ -107,7 +107,12 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
             window.alert("You cannot add a tremp in the past \n(Until further development in quantum physics)");
         }
         else {
-            window.alert(myTremper.time);
+            $http.post('js/data.json', $scope.myTremper).
+                then(function(response) {
+
+                }, function(response) {
+                    window.alert("Error: " + response);
+                });
         }
 
     };
@@ -146,7 +151,12 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
             window.alert("You cannot request a tremp in the past \n(Until further development in quantum physics)");
         }
         else {
-            window.alert(myTrempist.time);
+            $http.post('js/data.json', $scope.myTrempist).
+                then(function(response) {
+
+                }, function(response) {
+                    window.alert("Error: " + response);
+            });
         }
 
     };
