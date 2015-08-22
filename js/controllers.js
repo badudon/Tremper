@@ -10,21 +10,21 @@ tremperControllers.controller('ListController', ['$scope', '$http', function ($s
 }]);
 
 tremperControllers.controller('DetailsController', ['$scope', '$http', '$routeParams' ,function ($scope, $http, $routeParams) {
-    $http.get('js/data.json').success(function(data) {
+    $http.get('/getTrempers').success(function(data) {
         $scope.trempers = data;
         $scope.whichItem = $routeParams.itemId;
     });
 }]);
 
 tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$routeParams' ,function ($scope, $http, $routeParams) {
-    $http.get('js/data.json').success(function(data) {
+    $http.get('/getTrempers').success(function(data) {
         $scope.trempers = data;
         $scope.whichItem = $routeParams.itemId;
     });
 }]);
 
 tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '$routeParams' ,function ($scope, $http, $routeParams) {
-    $http.get('js/data.json').success(function(data) {
+    $http.get('/getTrempists').success(function(data) {
         $scope.trempists = data;
         $scope.whichItem = $routeParams.itemId;
     });
@@ -76,7 +76,7 @@ tremperControllers.controller('UserDetailsController', ['$scope', '$http', '$loc
 
 tremperControllers.controller('TremperController', ['$scope', '$http', '$routeParams', 'Data' ,function ($scope, $http, $routeParams, Data) {
 
-    $http.get('js/data.json').success(function(data) {
+    $http.get('/getTrempists').success(function(data) {
         $scope.trempists = data;
 
 
@@ -107,9 +107,9 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
             window.alert("You cannot add a tremp in the past \n(Until further development in quantum physics)");
         }
         else {
-            $http.post('js/data.json', $scope.myTremper).
+            $http.post('/newTremper', $scope.myTremper).
                 then(function(response) {
-
+                    window.alert("Post added");
                 }, function(response) {
                     window.alert("Error: " + response);
                 });
@@ -120,7 +120,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
 
 tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeParams', 'Data' ,function ($scope, $http, $routeParams, Data) {
 
-    $http.get('js/data.json').success(function(data) {
+    $http.get('/getTrempers').success(function(data) {
         $scope.trempers = data;
 
 
@@ -151,9 +151,9 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
             window.alert("You cannot request a tremp in the past \n(Until further development in quantum physics)");
         }
         else {
-            $http.post('js/data.json', $scope.myTrempist).
+            $http.post('/newTrempist', $scope.myTrempist).
                 then(function(response) {
-
+                    window.alert("Post added");
                 }, function(response) {
                     window.alert("Error: " + response);
             });
