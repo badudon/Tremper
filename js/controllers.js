@@ -29,7 +29,7 @@ tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$
     };
 }]);
 
-tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '$routeParams', '$location', function ($scope, $http, $routeParams, $location) {
+tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '$routeParams', 'Data', '$location', function ($scope, $http, $routeParams, Data, $location) {
 
     $scope.user = Data;
     $scope.isDeleteButtonVisible = false;
@@ -47,7 +47,7 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
         //    "user" : $scope.user.name,
         //    "time" : $scope.trempists[$scope.whichItem].time
         //};
-        $http.post('/deleteTrempist', $scope.trempers[$scope.whichItem]).
+        $http.post('/deleteTrempist', $scope.trempists[$scope.whichItem]).
             then(function(response) {
                 window.alert("Post removed");
             }, function(response) {
