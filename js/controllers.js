@@ -17,15 +17,12 @@ tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$
 
 
     $scope.deleteFromServer = function() {
-        details = {
-            "user" : $scope.user.name,
-            "time" : $scope.trempers[$scope.whichItem].time
-        };
-        $http.post('/deleteTremper', details).
+
+        $http.post('/deleteTremper', $scope.trempers[$scope.whichItem]).
             then(function(response) {
                 window.alert("Post removed");
         }, function(response) {
-            window.alert("Error: " + response);
+            window.alert("Error: " + response.data);
         });
 
         $location.path("/trempist");
@@ -46,15 +43,15 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
 
 
     $scope.deleteFromServer = function() {
-        details = {
-            "user" : $scope.user.name,
-            "time" : $scope.trempists[$scope.whichItem].time
-        };
-        $http.post('/deleteTrempist', details).
+        //details = {
+        //    "user" : $scope.user.name,
+        //    "time" : $scope.trempists[$scope.whichItem].time
+        //};
+        $http.post('/deleteTrempist', $scope.trempers[$scope.whichItem]).
             then(function(response) {
                 window.alert("Post removed");
             }, function(response) {
-                window.alert("Error: " + response);
+                window.alert("Error: " + response.data);
             });
 
         $location.path("/tremper");
@@ -140,7 +137,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
                 then(function(response) {
                     window.alert("Post added");
                 }, function(response) {
-                    window.alert("Error: " + response);
+                    window.alert("Error: " + response.data);
                 });
         }
 
