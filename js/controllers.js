@@ -3,66 +3,72 @@
  */
 var tremperControllers = angular.module('tremperControllers', ['ngAnimate']);
 
-tremperControllers.controller('ListController', ['$scope', '$http', function ($scope, $http) {
-    $http.get('js/data.json').success(function(data) {
-        $scope.trempers = data;
-    });
-}]);
+tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$routeParams', 'Data', '$location' ,function ($scope, $http, $routeParams, Data, $location) {
 
-tremperControllers.controller('DetailsController', ['$scope', '$http', '$routeParams' ,function ($scope, $http, $routeParams) {
+    $scope.user = Data;
+    $scope.isDeleteButtonVisible = false;
+
     $http.get('/getTrempers').success(function(data) {
         $scope.trempers = data;
         $scope.whichItem = $routeParams.itemId;
+        $scope.isDeleteButtonVisible = ($scope.trempers[$scope.whichItem].name == $scope.user.name) &&
+            ($scope.trempers[$scope.whichItem].phone == $scope.user.phone);
     });
+
+
+    $scope.deleteFromServer = function() {
+        details = {
+            "user" : $scope.user.name,
+            "time" : $scope.trempers[$scope.whichItem].time
+        };
+        $http.post('/deleteTremper', details).
+            then(function(response) {
+                window.alert("Post removed");
+        }, function(response) {
+            window.alert("Error: " + response);
+        });
+
+        $location.path("/trempist");
+    };
 }]);
 
-tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$routeParams' ,function ($scope, $http, $routeParams) {
-    $http.get('/getTrempers').success(function(data) {
-        $scope.trempers = data;
-        $scope.whichItem = $routeParams.itemId;
-    });
-}]);
+tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '$routeParams', '$location', function ($scope, $http, $routeParams, $location) {
 
-tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '$routeParams' ,function ($scope, $http, $routeParams) {
+    $scope.user = Data;
+    $scope.isDeleteButtonVisible = false;
+
     $http.get('/getTrempists').success(function(data) {
         $scope.trempists = data;
         $scope.whichItem = $routeParams.itemId;
+        $scope.isDeleteButtonVisible = ($scope.trempists[$scope.whichItem].name == $scope.user.name) &&
+            ($scope.trempists[$scope.whichItem].phone == $scope.user.phone);
     });
+
+
+    $scope.deleteFromServer = function() {
+        details = {
+            "user" : $scope.user.name,
+            "time" : $scope.trempists[$scope.whichItem].time
+        };
+        $http.post('/deleteTrempist', details).
+            then(function(response) {
+                window.alert("Post removed");
+            }, function(response) {
+                window.alert("Error: " + response);
+            });
+
+        $location.path("/tremper");
+    };
 }]);
+
+tremperControllers.controller('EmptyController', ['$scope', '$http', '$location', 'Data' ,function ($scope, $http, $location, Data) {}]);
 
 tremperControllers.controller('UserDetailsController', ['$scope', '$http', '$location', 'Data' ,function ($scope, $http, $location, Data) {
 
     $scope.user = Data;
 
-    if (localStorage.getItem("userDetailsSet") != null) {
-        $scope.user.name = localStorage.getItem("userName");
-        $scope.user.phone = localStorage.getItem("userPhone");
-        $scope.user.gender = localStorage.getItem("userGender");
-        $scope.user.exists = true;
-        Data.name =  $scope.user.name;
-        Data.phone = $scope.user.phone;
-        Data.gender = $scope.user.gender;
-        Data.exists = true;
-        //window.alert("Details found in memory");
-        //$scope.updateUser($scope.user);
 
-    };
-
-//    if (!$scope.user.exists) {
-//        $scope.user = {
-//            name: '',
-//            phone: '',
-//            gender: ''
-//        };
-//        window.alert("user was undefined");
-//
-//    } else {
-//
-//    }
-
-
-    $scope.updateUser = function(user, fromMain) {
-        window.alert("UpdateUser invoked");
+    $scope.updateUser = function (user, fromMain) {
         localStorage.setItem("userName", user.name);
         localStorage.setItem("userPhone", user.phone);
         localStorage.setItem("userGender", user.gender);
@@ -72,6 +78,19 @@ tremperControllers.controller('UserDetailsController', ['$scope', '$http', '$loc
         };
 
     }
+
+    if (localStorage.getItem("userDetailsSet") != null) {
+        $scope.user.name = localStorage.getItem("userName");
+        $scope.user.phone = localStorage.getItem("userPhone");
+        $scope.user.gender = localStorage.getItem("userGender");
+        $scope.user.exists = true;
+        Data.name = $scope.user.name;
+        Data.phone = $scope.user.phone;
+        Data.gender = $scope.user.gender;
+        Data.exists = true;
+        $scope.updateUser($scope.user, true);
+    };
+
 }]);
 
 tremperControllers.controller('TremperController', ['$scope', '$http', '$routeParams', 'Data' ,function ($scope, $http, $routeParams, Data) {
@@ -82,6 +101,16 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
 
         $scope.whichItem = $routeParams.itemId;
     });
+
+    $scope.updateUser = function (user) {
+        localStorage.setItem("userName", $scope.myTremper.name);
+        localStorage.setItem("userPhone", $scope.myTremper.phone);
+        localStorage.setItem("userGender", $scope.myTremper.gender);
+        localStorage.setItem("userDetailsSet", true);
+        Data.name = $scope.myTremper.name;
+        Data.phone = $scope.myTremper.phone;
+        Data.gender = $scope.myTremper.gender;
+    };
 
     $scope.user = Data;
 
@@ -126,6 +155,16 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
 
         $scope.whichItem = $routeParams.itemId;
     });
+
+    $scope.updateUser = function (user) {
+        localStorage.setItem("userName", $scope.myTrempist.name);
+        localStorage.setItem("userPhone", $scope.myTrempist.phone);
+        localStorage.setItem("userGender", $scope.myTrempist.gender);
+        localStorage.setItem("userDetailsSet", true);
+        Data.name = $scope.myTrempist.name;
+        Data.phone = $scope.myTrempist.phone;
+        Data.gender = $scope.myTrempist.gender;
+    };
 
     $scope.user = Data;
 

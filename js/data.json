@@ -2,42 +2,74 @@
     {
         "name" : "Ben Menahem",
         "from" : "Tel Aviv",
-        "to" : "Tel Aviv"
+        "to" : "Tel Aviv",
+        "details" : "Check1",
+        "gender" : "male",
+        "time" : "124",
+        "phone" : "050777777"
     },
     {
         "name" : "Ben Menahem2",
         "from" : "Hertzeliya2",
-        "to" : "Jerusalem"
+        "to" : "Jerusalem",
+        "details" : "Check2",
+        "gender" : "female",
+        "time" : "125",
+        "phone" : "050777777"
     },
     {
         "name" : "Ben Menahem3",
         "from" : "Hertzeliya3",
-        "to" : "Tel Habib"
+        "to" : "Tel Habib",
+        "details" : "Check1",
+        "gender" : "male",
+        "time" : "124",
+        "phone" : "050777777"
     },
     {
         "name" : "Ben Menahem4",
         "from" : "Tel Habib",
-        "to" : "Tel Aviv4"
+        "to" : "Tel Aviv4",
+        "details" : "Check1",
+        "gender" : "male",
+        "time" : "124",
+        "phone" : "050777777"
     },
     {
         "name" : "Ben Menahem5",
         "from" : "Ayalon",
-        "to" : "Tel Aviv5"
+        "to" : "Tel Aviv5",
+        "details" : "Check1",
+        "gender" : "male",
+        "time" : "124",
+        "phone" : "050777777"
     },
     {
         "name" : "Ben Menahem6",
         "from" : "Hertzeliya6",
-        "to" : "Tel Aviv6"
+        "to" : "Tel Aviv6",
+        "details" : "Check1",
+        "gender" : "male",
+        "time" : "124",
+        "phone" : "050777777"
     },
     {
         "name" : "Ben Menahem7",
         "from" : "Hertzeliya7",
-        "to" : "Tel Aviv7"
+        "to" : "Tel Aviv7",
+        "details" : "Check1",
+        "gender" : "male",
+        "time" : "124",
+        "phone" : "050777777"
     },
     {
         "name" : "Ben Menahem8",
         "from" : "Hertzeliya8",
-        "to" : "Tel Aviv8"
+        "to" : "Tel Aviv8",
+        "details" : "Check1",
+        "gender" : "male",
+        "time" : "1111194",
+        "phone" : "050777777"
     }
 
 ]

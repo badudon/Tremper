@@ -1,10 +1,15 @@
 <section class="tremperinfo">
     <div class="tremper cf" ng-model="trempers">
-        <h1>{{trempers[whichItem].name}}</h1>
+        <h1 style="text-transform: capitalize">{{trempers[whichItem].name}}, {{trempers[whichItem].gender | filter: 'name'}}</h1>
         <div class="info">
-            <h3>{{trempers[whichItem].from}}</h3>
-            <h3>{{trempers[whichItem].to}}</h3>
-            <h3>{{trempers[whichItem].name}}</h3>
+            <h3>{{trempers[whichItem].time | date : 'EEEE HH:mm'}}</h3>
+            <h3 style="text-transform: capitalize">{{trempers[whichItem].from}}</h3>
+            <h3 style="text-transform: capitalize">{{trempers[whichItem].to}}</h3>
+            <h3 style="text-transform: capitalize">{{trempers[whichItem].details}}</h3>
+            <h3>{{trempers[whichItem].phone}}</h3>
+            <br/>
+            <button ng-show="isDeleteButtonVisible"
+                    ng-click="deleteFromServer()">Delete</button>
         </div>
     </div>
     <a href="#/trempist">&laquo; Back to Trempers list</a>

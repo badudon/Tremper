@@ -8,14 +8,7 @@ var myApp = angular.module('myApp', [
 
 myApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
-        when('/list', {
-        templateUrl: 'partials/list.html',
-        controller: 'ListController'
-    }).
-        when('/details/:itemId' ,{
-            templateUrl: 'partials/details.html',
-            controller: 'DetailsController'
-    }).
+
         when('/details_tremper/:itemId' ,{
             templateUrl: 'partials/details_tremper.html',
             controller: 'TremperDetailsController'
@@ -30,7 +23,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         }).
         when('/typeSelect', {
             templateUrl: 'partials/typeSelect.html',
-            controller: 'UserDetailsController'
+            controller: 'EmptyController'
         }).
         when('/trempist', {
             templateUrl: 'partials/trempist.html',
@@ -41,7 +34,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
             controller: 'TremperController'
         }).
         otherwise({
-            redirectTo: '/list'
+            redirectTo: 'partials/login.html'
     });
 }]);
 
