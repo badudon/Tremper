@@ -32,7 +32,7 @@ tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$
     };
 }]);
 
-tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '$routeParams', '$location', function ($scope, $http, $routeParams, $location) {
+tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '$routeParams', '$location', 'Data', function ($scope, $http, $routeParams, $location, Data) {
 
     $scope.user = Data;
     $scope.isDeleteButtonVisible = false;
