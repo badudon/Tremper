@@ -2,10 +2,36 @@
     <div section="logindetails">
         <h1>Please enter your details:</h1>
         <form class="simple-form">
-            Name :   <input type="text" ng-model="user.name" /><br />
-            Phone:   <input type="phone" ng-model="user.phone" /><br />
-            Gender: <input type="radio" ng-model="user.gender" value="male" />male
-            <input type="radio" ng-model="user.gender" value="female" />female<br />
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td width="10"></td>
+                    <td><input type="text" ng-model="user.name" /></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td width="10"></td>
+                    <td><input type="tel" ng-model="user.phone" /></td>
+                </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td width="60">Gender</td>
+                        <td width="10"></td>
+                        <td width="80"><input type="radio" ng-model="user.gender" value="male" />Male</td>
+                        <td width="100"><input type="radio" ng-model="user.gender" value="female" />Female</td>
+                    </tr>
+                </table>
+
+                <tr>
+
+                </tr>
+
+
+
+            </table>
+
+            <br/>
             <input type="submit" ng-click="updateUser(user, true)" value="Continue" />
         </form>
     </div>
