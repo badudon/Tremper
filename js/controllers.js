@@ -92,6 +92,7 @@ tremperControllers.controller('UserDetailsController', ['$scope', '$http', '$loc
 
 tremperControllers.controller('TremperController', ['$scope', '$http', '$routeParams', 'Data' ,function ($scope, $http, $routeParams, Data) {
 
+    
     $http.get('/getTrempists').success(function(data) {
         $scope.trempists = data;
 
