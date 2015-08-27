@@ -137,7 +137,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
         else {
             $http.post('/newTremper', $scope.myTremper).
                 then(function(response) {
-                    window.alert("Post added");
+                    alertify.log("Post added");
                 }, function(response) {
                     alertify.log("Error: " + response.data);
                 });
