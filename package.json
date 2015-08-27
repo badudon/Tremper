@@ -1,0 +1,16 @@
+{
+  "name": "Tremper",
+  "version": "1.0.0",
+  "description": "app2",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "author": "Ben, Aryeh and Ben",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3"
+  }
+}
