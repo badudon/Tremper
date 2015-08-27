@@ -6,7 +6,7 @@
             <h3 style="text-transform: capitalize">{{trempers[whichItem].from}}</h3>
             <h3 style="text-transform: capitalize">{{trempers[whichItem].to}}</h3>
             <h3 style="text-transform: capitalize">{{trempers[whichItem].details}}</h3>
-            <h3>{{trempers[whichItem].phone}}</h3>
+            <a href="tel:{{trempers[whichItem].phone}}">Call Tremper</a>
             <br/>
             <button ng-show="isDeleteButtonVisible"
                     ng-click="deleteFromServer()">Delete</button>
