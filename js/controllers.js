@@ -90,9 +90,10 @@ tremperControllers.controller('UserDetailsController', ['$scope', '$http', '$loc
 
 }]);
 
-tremperControllers.controller('TremperController', ['$scope', '$http', '$routeParams', 'Data' ,function ($scope, $http, $routeParams, Data) {
+tremperControllers.controller('TremperController', ['$scope', '$http', '$routeParams', 'Data', function ($scope, $http, $routeParams, Data) {
 
-    
+
+
     $http.get('/getTrempists').success(function(data) {
         $scope.trempists = data;
 
@@ -123,7 +124,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
         details : '',
         type : 'tremper',
         hour : $scope.datetime.getHours(),
-        minutes : $scope.datetime.getMinutes(),
+        minutes : $scope.datetime.getMinutes() + 1,
         date : $scope.datetime,
         time : ''
     }
@@ -131,14 +132,14 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
     $scope.updateTremperList = function(myTremper) {
         myTremper.time = new Date(myTremper.date.getFullYear(), myTremper.date.getMonth(), myTremper.date.getDate(), myTremper.hour, myTremper.minutes, 0,0);
         if (myTremper.time < $scope.datetime) {
-            window.alert("You cannot add a tremp in the past \n(Until further development in quantum physics)");
+            alertify.log("You cannot add a tremp in the past \n(Until further development in quantum physics)");
         }
         else {
             $http.post('/newTremper', $scope.myTremper).
                 then(function(response) {
                     window.alert("Post added");
                 }, function(response) {
-                    window.alert("Error: " + response.data);
+                    alertify.log("Error: " + response.data);
                 });
         }
 
@@ -177,7 +178,7 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
         details : '',
         type : 'trempist',
         hour : $scope.datetime.getHours(),
-        minutes : $scope.datetime.getMinutes(),
+        minutes : $scope.datetime.getMinutes() + 1,
         date : $scope.datetime,
         time : ''
     }
@@ -185,14 +186,14 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
     $scope.updateTrempistsList = function(myTrempist) {
         myTrempist.time = new Date(myTrempist.date.getFullYear(), myTrempist.date.getMonth(), myTrempist.date.getDate(), myTrempist.hour, myTrempist.minutes, 0,0);
         if (myTrempist.time < $scope.datetime) {
-            window.alert("You cannot request a tremp in the past \n(Until further development in quantum physics)");
+            alertify.log("You cannot request a tremp in the past \n(Until further development in quantum physics)");
         }
         else {
             $http.post('/newTrempist', $scope.myTrempist).
                 then(function(response) {
-                    window.alert("Post added");
+                    alertify.log("Post added");
                 }, function(response) {
-                    window.alert("Error: " + response);
+                    alertify.log("Error: " + response);
             });
         }
 
