@@ -466,7 +466,19 @@ a.small {
    cursor: pointer; 
    cursor: hand; 
 }
+.newTrempSlide.ng-hide {
+  height:0;
+  transition:height 0.35s ease;
+  overflow:hidden;
+  position:relative;
+}
 
+.newTrempSlide {
+  height:500px;
+  transition:height 0.35s ease;
+  overflow:hidden;
+  position:relative;
+}
 .newTrempSlide.ng-hide-remove,
 .newTrempSlide.ng-hide-add {
   /* remember, the .hg-hide class is added to element
