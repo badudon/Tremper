@@ -1,8 +1,8 @@
 // init database
 var Datastore = require('nedb');
 db = {};
-db.trempists = new Datastore({filename: 'data/trempists.db', autoload: true });
-db.trempers = new Datastore({filename: 'data/trempers.db', autoload: true });
+db.trempists = new Datastore({filename: './data/trempists.db', autoload: true });
+db.trempers = new Datastore({filename: './data/trempers.db', autoload: true });
 
 // module functions to call from server
 module.exports = {

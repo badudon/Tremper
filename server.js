@@ -43,8 +43,9 @@ app.get('/getTrempists', function (req, res) {
 // POST requests
 app.post('/newTremper',function(req, res) {
     data.addTremper(req.body, function (err) {
+        console.log(req.body);
         err ? res.status(500).json(err) : res.sendStatus(200);
-        //console.log(req.body);
+
         //res.json(data.addTremper(req.body));
     });
 });
@@ -71,6 +72,9 @@ app.post('/deleteTrempist', function (req, res) {
         err ? res.status(500).json(err) : res.sendStatus(200);
     });
 });
+
+// Access to data folder
+app.use('/data', express.static('data'));
 
 // 404 handling
 app.use(function(req, res) {
