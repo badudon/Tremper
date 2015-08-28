@@ -1,54 +1,56 @@
 <section class="tremper">
-    <div class="tremperstart">
-        <h1>New Tremp</h1>
-        <form class="simple-form">
-            <table class="center">
-                <tr>
-                    <td><h3>Name</h3></td>
-                    <td><input type="text" ng-model="myTremper.name" /></td>
-                </tr>
-                <tr>
-                    <td><h3>Phone</h3></td>
-                    <td><input type="tel" ng-model="myTremper.phone" /></td>
-                </tr>
-            </table>
-            <table class="center">
-                <tr>
-                    <td><h3>Gender</h3></td>
-                    <td><input type="radio" ng-model="myTremper.gender" value="male" />Male</td>
-                    <td><input type="radio" ng-model="myTremper.gender" value="female" />Female</td>
-                </tr>
-            </table>
+    <div class="tremperstart" ng-hide="!TremperActive ">
+        <div ng-click="TremperActive  = !TremperActive " > </div>
+               <h1>Offer a New Tremp</h1>
+                    
+                    <form class="simple-form">
+                        <table class="center">
+                            <tr>
+                                <td><h3>Name</h3></td>
+                                <td><input type="text" ng-model="myTremper.name" /></td>
+                            </tr>
+                            <tr>
+                                <td><h3>Phone</h3></td>
+                                <td><input type="tel" ng-model="myTremper.phone" /></td>
+                            </tr>
+                        </table>
+                        <table class="center">
+                            <tr>
+                                <td><h3>Gender</h3></td>
+                                <td><input type="radio" ng-model="myTremper.gender" value="male" />Male</td>
+                                <td><input type="radio" ng-model="myTremper.gender" value="female" />Female</td>
+                            </tr>
+                        </table>
 
 
-            <input type="submit" ng-click="updateUser(user)" value="Save Details" />
-            <br/><br/>
-            <table class="center">
-                <tr>
-                    <td><h3>From</h3></td>
-                    <td><input type="text" ng-model="myTremper.from"/></td>
-                </tr>
-                <tr>
-                    <td><h3>To</h3></td>
-                    <td><input type="text" ng-model="myTremper.to"/></td>
-                </tr>
-                <tr>
-                    <td><h3>Details</h3></td>
-                    <td><textarea rows="2" ng-model="myTremper.detials"></textarea></td>
-                </tr>
-                <tr>
-                    <td><h3>Date</h3></td>
-                    <td><input type="date" ng-model="myTremper.date"/></td>
-                </tr>
-                <tr>
-                    <td><h3>Time</h3></td>
-                    <td><input type="number" ng-model="myTremper.hour" min="0" max="23"/>
-                        : <input type="number" ng-model="myTremper.minutes" min="0" max="59"/></td>
-                </tr>
-            </table>
-            <input type="submit" ng-click="updateTremperList(myTremper)" value="Post" />
-        </form>
-    </div>
+                        <input type="submit" ng-click="updateUser(user)" value="Save Details" />
+                        <br/><br/>
+                        <table class="center">
+                            <tr>
+                                <td><h3>From</h3></td>
+                                <td><input type="text" ng-model="myTremper.from"/></td>
+                            </tr>
+                            <tr>
+                                <td><h3>To</h3></td>
+                                <td><input type="text" ng-model="myTremper.to"/></td>
+                            </tr>
+                            <tr>
+                                <td><h3>Details</h3></td>
+                                <td><textarea rows="2" ng-model="myTremper.detials"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><h3>Date</h3></td>
+                                <td><input type="date" ng-model="myTremper.date"/></td>
+                            </tr>
+                            <tr>
+                                <td><h3>Time</h3></td>
+                                <td><input type="number" ng-model="myTremper.hour" min="0" max="23"/>
+                                    : <input type="number" ng-model="myTremper.minutes" min="0" max="59"/></td>
+                            </tr>
+                        </table>
+                        <input type="submit" ng-click="updateTremperList(myTremper)" value="Post" />
+                    </form>
+                </div>
 </section>
 <section class="tremperpage">
     <div class="search">
