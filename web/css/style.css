@@ -462,11 +462,11 @@ a.small {
     resize: vertical;
 }
 
-.tramper.tremperHeadLine {
+.tremperHeadLine {
    cursor: pointer; 
    cursor: hand; 
 }
-.tremper.newTrempCollapsed{
+.newTrempSlide.ng-hide-add{
 
     animation-name: hide;
   -webkit-animation-name: hide;  
@@ -478,7 +478,7 @@ a.small {
   -webkit-animation-timing-function: ease-in; 
 }
 
-.tremper.newTrempExpanded {
+.newTrempSlide.ng-hide-remove{
   
  animation-name: show;
   -webkit-animation-name: show;  
