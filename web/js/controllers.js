@@ -129,6 +129,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
         time : ''
     }
     $scope.TremperActive = false;
+    $scope.TrempistSearchActive = false;
 
     $scope.updateTremperList = function(myTremper) {
         myTremper.time = new Date(myTremper.date.getFullYear(), myTremper.date.getMonth(), myTremper.date.getDate(), myTremper.hour, myTremper.minutes, 0,0);
