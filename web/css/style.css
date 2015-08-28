@@ -474,7 +474,7 @@ a.small {
 }
 
 .newTrempSlide {
-  height:500px;
+  height:400px;
   transition:height 0.35s ease;
   overflow:hidden;
   position:relative;
