@@ -27,50 +27,54 @@ app.get('/partners.html', function(req, res) {
 
 // Lists GET request
 app.get('/getTrempers', function (req, res) {
-    console.log("Request for trempersList");
-    res.json(data.getTrempers());
+    //   console.log("Request for trempersList");
+    data.getTrempers(function(err, data) {
+        err ? res.status(500).json(err) : res.json(data);
+    });
 });
 app.get('/getTrempists', function (req, res) {
-    console.log("Request for trempistsList");
-    res.json(data.getTrempists());
+    //   console.log("Request for trempistsList");
+    data.getTrempists(function(err, data) {
+        //   console.log("sending data now");
+        err ? res.status(500).json(err) : res.json(data);
+    });
 });
 
 // POST requests
-app.post('/newTremper',function(req, res){
-    console.log(req.body);
-    res.json(data.addTremper(req.body));
+app.post('/newTremper',function(req, res) {
+    data.addTremper(req.body, function (err) {
+        err ? res.status(500).json(err) : res.sendStatus(200);
+        //console.log(req.body);
+        //res.json(data.addTremper(req.body));
+    });
 });
 app.post('/newTrempist',function(req, res){
-    console.log(req.body);
-    res.json(data.addTrempist(req.body));
+    data.addTrempist(req.body, function(err) {
+        err ? res.status(500).json(err) : res.sendStatus(200);
+        //console.log(req.body);
+        //res.json(data.addTrempist(req.body));
+    });
 });
 
 // Delete requests
 app.post('/deleteTremper', function (req, res) {
-    console.log("delete request:");
-    console.log(req.body);
-    data.deleteTremper(req.body);
-    res.sendStatus(200);
+    //console.log("delete request:");
+    //console.log(req.body);
+    data.deleteTremper(req.body, function(err) {
+        err ? res.status(500).json(err) : res.sendStatus(200);
+    });
 });
 app.post('/deleteTrempist', function (req, res) {
-    console.log("delete request:");
-    console.log(req.body);
-    data.deleteTrempist(req.body);
-    res.sendStatus(200);
+    //console.log("delete request:");
+    //console.log(req.body);
+    data.deleteTrempist(req.body, function(err) {
+        err ? res.status(500).json(err) : res.sendStatus(200);
+    });
 });
-
-//app.get('/backup/:id/:num', function (req, res) {
-//    if (req.params.id == 1234) {
-//       data.backup(req.params.num);
-//        res.send("OK Admin");
-//    } else {
-//        res.send("You are not the admin");
-//    }
-//});
 
 // 404 handling
 app.use(function(req, res) {
-    res.status(404).send('<h1>Page ' + req.path + ' doesn\'t exist</h1>');
+    res.status(404).send('<h2>404: Page "' + req.path + '" doesn\'t exist</h2><br><a href="/">Go to Tremper</a>');
 });
 
 // Set port and listen
