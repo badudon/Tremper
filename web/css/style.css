@@ -467,20 +467,6 @@ a.small {
    cursor: hand; 
 }
 
-.newTrempSlide.ng-hide {
-  height:0;
-  transition:height 0.35s ease;
-  overflow:hidden;
-  position:relative;
-}
-
-.newTrempSlide {
-  height:141px;
-  transition:height 0.35s ease;
-  overflow:hidden;
-  position:relative;
-}
-
 .newTrempSlide.ng-hide-remove,
 .newTrempSlide.ng-hide-add {
   /* remember, the .hg-hide class is added to element
@@ -490,21 +476,22 @@ a.small {
   display:block!important;
 }
 
-.newTrempSlide.ng-hide-add{
 
-    animation-name: hide;
+.newTrempSlide.ng-hide-add {
+  animation-name: hide;
   -webkit-animation-name: hide;  
 
   animation-duration: .5s; 
   -webkit-animation-duration: .5s;
 
   animation-timing-function: ease-in;  
-  -webkit-animation-timing-function: ease-in; 
+  -webkit-animation-timing-function: ease-in;  
 }
 
-.newTrempSlide.ng-hide-remove{
-  
- animation-name: show;
+
+
+.newTrempSlide.ng-hide-remove {
+  animation-name: show;
   -webkit-animation-name: show;  
 
   animation-duration: .5s; 
@@ -512,9 +499,7 @@ a.small {
 
   animation-timing-function: ease-out;  
   -webkit-animation-timing-function: ease-out;  
-
 }
-
 
 .tremper input[type=date], input[type=text], input[type=tel] {
     width: 100%;
