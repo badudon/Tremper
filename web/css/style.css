@@ -462,6 +462,34 @@ a.small {
     resize: vertical;
 }
 
+.tramper.tremperHeadLine {
+   cursor: pointer; 
+   cursor: hand; 
+}
+.tremper.newTrempCollapsed{
+
+    animation-name: hide;
+  -webkit-animation-name: hide;  
+
+  animation-duration: .5s; 
+  -webkit-animation-duration: .5s;
+
+  animation-timing-function: ease-in;  
+  -webkit-animation-timing-function: ease-in; 
+}
+
+.tremper.newTrempExpanded {
+  
+ animation-name: show;
+  -webkit-animation-name: show;  
+
+  animation-duration: .5s; 
+  -webkit-animation-duration: .5s;
+
+  animation-timing-function: ease-out;  
+  -webkit-animation-timing-function: ease-out;  
+
+}
 
 
 .tremper input[type=date], input[type=text], input[type=tel] {
