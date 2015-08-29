@@ -74,7 +74,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 html {
   background-color: #10AAC0;
   background-image: url(../images/background.png); 
-  background-position: center
+  background-position: center;
   background-repeat: no-repeat;
   min-height: 100%;
   height: auto;
