@@ -58,6 +58,13 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
     };
 }]);
 
+tremperControllers.controller('landingPageController', ['$scope', '$http', '$location', 'Data' , '$interval' ,function ($scope, $http, $location, Data,$interval) {
+   var landingPage_img = "images/landing_img.png"
+   $interval(function(){},3000);
+   var landingPage_img = "null"
+
+
+}]);
 tremperControllers.controller('EmptyController', ['$scope', '$http', '$location', 'Data' ,function ($scope, $http, $location, Data) {}]);
 
 tremperControllers.controller('UserDetailsController', ['$scope', '$http', '$location', 'Data' ,function ($scope, $http, $location, Data) {
