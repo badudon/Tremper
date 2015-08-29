@@ -418,6 +418,12 @@ a.small {
     margin-top: 10px;
     text-align:center
 }
+.car_img{
+  width: 100%;
+  display: inline-block;
+  margin-top: 10px;
+  text-align:center
+}
 .select td {
     text-align: center;
     padding-top: 10px;
@@ -469,6 +475,10 @@ a.small {
 }
 
 .tremperHeadLine {
+   cursor: pointer; 
+   cursor: hand; 
+}
+.TrempistHeadLine {
    cursor: pointer; 
    cursor: hand; 
 }

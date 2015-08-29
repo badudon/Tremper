@@ -185,6 +185,9 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
         time : ''
     }
 
+    $scope.TrempistActive = false;
+    $scope.TremperSearchActive = false;
+
     $scope.updateTrempistsList = function(myTrempist) {
         myTrempist.time = new Date(myTrempist.date.getFullYear(), myTrempist.date.getMonth(), myTrempist.date.getDate(), myTrempist.hour, myTrempist.minutes, 0,0);
         if (myTrempist.time < $scope.datetime) {
