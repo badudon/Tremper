@@ -65,9 +65,9 @@ tremperControllers.controller('landingPageController', ['$scope', '$http', '$loc
         $scope.landingPageOff = false;
        }
    } 
-   var waitingTime = 5;
+   $scope.waitingTime = 3;
    $scope.landingPageOff = true;
-   $interval(decrement,1000,waitingTime);
+   $interval(decrement,1000,$scope.waitingTime);
   
    
 
