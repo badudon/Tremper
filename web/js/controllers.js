@@ -61,7 +61,7 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
 tremperControllers.controller('landingPageController', ['$scope', '$http', '$location', 'Data' , '$interval' ,function ($scope, $http, $location, Data,$interval) {
    $scope.landingPage_img = "images/landing_img.png"
    $interval(function(){},3000);
-   $scope.landingPage_img = "null"
+   
 
 
 }]);
