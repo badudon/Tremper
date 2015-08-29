@@ -64,7 +64,7 @@ tremperControllers.controller('landingPageController', ['$scope', '$http', '$loc
    } 
    
    $scope.landingPageOff = true;
-   $interval(decrement,3000,1);
+   $interval(decrement,2500,1);
   
    
 
