@@ -83,6 +83,8 @@ html {
 }
 
 body  {
+    background-image: url("../images/background.png");
+    background-repeat: no-repeat;
   font-family: Merriweather, serif;
   font-size: 1rem;
   line-height: 160%;
