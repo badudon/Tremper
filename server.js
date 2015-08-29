@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+var path = require("path");
 
 // Loads server data file
 var data = require('./data.js');
@@ -16,13 +17,13 @@ app.get('/', function(req, res) {
 
 // Information pages
 app.get('/heroku.html', function(req, res) {
-    res.redirect('/web/heroku.html');
+    res.sendFile(path.join(__dirname + '/heroku.html'));
 });
 app.get('/help.html', function(req, res) {
-    res.redirect('/web/help.html');
+    res.sendFile(path.join(__dirname + '/help.html'));
 });
 app.get('/partners.html', function(req, res) {
-    res.redirect('/web/partners.html');
+    res.sendFile(path.join(__dirname + '/partners.html'));
 });
 
 // Lists GET request
