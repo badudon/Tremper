@@ -416,8 +416,7 @@ a.small {
     width: 100%;
     display: inline-block;
     margin-top: 10px;
-    vertical-align: middle;
-
+    text-align:center
 }
 .select td {
     text-align: center;
