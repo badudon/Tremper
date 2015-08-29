@@ -75,7 +75,7 @@ html {
   background-color: #10AAC0;
   background-image: url(../images/background.png); 
   background-attachment: fixed;
-  background-position: 25% 0%; 
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   min-height: 100%;
   height: auto;
