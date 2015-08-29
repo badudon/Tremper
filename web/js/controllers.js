@@ -60,14 +60,13 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
 
 tremperControllers.controller('landingPageController', ['$scope', '$http', '$location', 'Data' , '$interval' ,function ($scope, $http, $location, Data,$interval) {
    var decrement = function(){
-       $scope.waitingTime -= 1
-       if (waitingTime < 1 ) {
+       
         $scope.landingPageOff = false;
-       }
+      
    } 
-   $scope.waitingTime = 3;
+   
    $scope.landingPageOff = true;
-   $interval(decrement,1000,$scope.waitingTime);
+   $interval(decrement,4000);
   
    
 
