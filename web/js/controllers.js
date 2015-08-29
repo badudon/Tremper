@@ -62,11 +62,11 @@ tremperControllers.controller('landingPageController', ['$scope', '$http', '$loc
    var decrement = function(waitingTime){
        waitingTime -= 1
        if (waitingTime < 1 ) {
-        $scope.landingPage_img = "null"
+        $scope.landingPageOff = false;
        }
    } 
-   var waitingTime = 3
-   $scope.landingPage_img = "images/landing_img.png"
+   var waitingTime = 5;
+   $scope.landingPageOff = true;
    $interval(decrement,1000,waitingTime);
    decrement();
    
