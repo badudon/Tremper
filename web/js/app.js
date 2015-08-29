@@ -23,7 +23,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         }).
         when('/typeSelect', {
             templateUrl: 'partials/typeSelect.html',
-            controller: 'EmptyController'
+            controller: 'landingPageController'
         }).
         when('/trempist', {
             templateUrl: 'partials/trempist.html',
