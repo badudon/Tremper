@@ -412,6 +412,11 @@ a.small {
     color: #EEE8D5;
 }
 
+.bus_stop_img{
+    width: 100%;
+    display: inline-block;
+    margin-top: 10px;
+}
 .select td {
     text-align: center;
     padding-top: 10px;
