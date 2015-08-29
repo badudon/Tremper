@@ -1,4 +1,5 @@
 html, body {
+    background-image: url("../images/background.png");
     background-repeat: no-repeat;
     background: #fff;
     font-family: Arial, sans-serif;
