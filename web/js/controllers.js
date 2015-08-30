@@ -2,7 +2,7 @@
  * Created by Ben on 10-Aug-15.
  */
 var tremperControllers = angular.module('tremperControllers', ['ngAnimate']);
-var TremperSearchActive = false;
+
 tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$routeParams', 'Data', '$location' ,function ($scope, $http, $routeParams, Data, $location) {
 
     $scope.user = Data;

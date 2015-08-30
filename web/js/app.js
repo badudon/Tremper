@@ -5,7 +5,7 @@ var myApp = angular.module('myApp', [
     'ngRoute',
     'tremperControllers'
 ]);
-
+var TremperSearchActive = false;
 myApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
 
