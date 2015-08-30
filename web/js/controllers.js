@@ -8,8 +8,8 @@ tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$
     $scope.user = Data;
     $scope.isDeleteButtonVisible = false;
 
-    $http.get('js/data.json').success(function(data) {
-    //$http.get('/getTrempers').success(function(data) {
+
+    $http.get('/getTrempers').success(function(data) {
         $scope.trempers = data;
         $scope.whichItem = $routeParams.itemId;
         $scope.isDeleteButtonVisible = ($scope.trempers[$scope.whichItem].name == $scope.user.name) &&
@@ -35,8 +35,7 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
     $scope.user = Data;
     $scope.isDeleteButtonVisible = false;
 
-    $http.get('js/data.json').success(function(data) {
-    //$http.get('/getTrempists').success(function(data) {
+    $http.get('/getTrempists').success(function(data) {
         $scope.trempists = data;
         $scope.whichItem = $routeParams.itemId;
         $scope.isDeleteButtonVisible = ($scope.trempists[$scope.whichItem].name == $scope.user.name) &&
@@ -111,8 +110,8 @@ tremperControllers.controller('UserDetailsController', ['$scope', '$http', '$loc
 tremperControllers.controller('TremperController', ['$scope', '$http', '$routeParams', 'Data', function ($scope, $http, $routeParams, Data) {
 
 
-    $http.get('js/data.json').success(function(data) {
-    //$http.get('/getTrempists').success(function(data) {
+
+    $http.get('/getTrempists').success(function(data) {
         $scope.trempists = data;
 
 
@@ -188,8 +187,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
 
 tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeParams', 'Data' ,function ($scope, $http, $routeParams, Data) {
 
-    $http.get('js/data.json').success(function(data) {
-    //$http.get('/getTrempers').success(function(data) {
+    $http.get('/getTrempers').success(function(data) {
         $scope.trempers = data;
 
 
