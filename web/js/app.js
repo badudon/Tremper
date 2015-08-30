@@ -45,8 +45,9 @@ myApp.user = {
     exists : false
 };
 
+
 myApp.factory('Data', function() {
         return myApp.user;
-    }
+    });
 
-);
+

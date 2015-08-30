@@ -1,6 +1,7 @@
 <section class="login">
     <div section="logindetails">
-        <h1>Please enter your details:</h1>
+        <h1>Welcome To Tremper</h1>
+        <h2>Please enter your details:</h2><br/>
         <form class="simple-form">
             <table>
                 <tr>
@@ -32,7 +33,7 @@
             </table>
 
             <br/>
-            <input type="submit" ng-click="updateUser(user, true)" value="Continue" />
+            <input type="submit" ng-click="updateUser(user, true)" value="Continue" ng-disabled="userDataEntered()"/>
         </form>
     </div>
 </section>

@@ -412,13 +412,13 @@ a.small {
     color: #EEE8D5;
 }
 
-.bus_stop_img{
+.bus_stop_img img{
     width: 100%;
     display: inline-block;
     margin-top: 10px;
     text-align:center
 }
-.car_img{
+.car_img img{
   width: 100%;
   display: inline-block;
   margin-top: 10px;
@@ -490,7 +490,8 @@ a.small {
 }
 
 .newTrempSlide {
-  height:400px;
+  height: auto;
+  min-height: 20px;
   transition:height 0.35s ease;
   overflow:hidden;
   position:relative;
