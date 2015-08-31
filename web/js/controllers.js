@@ -3,10 +3,11 @@
  */
 var tremperControllers = angular.module('tremperControllers', ['ngAnimate']);
 
-tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$routeParams', 'Data', '$location' ,function ($scope, $http, $routeParams, Data, $location) {
+tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$routeParams', 'Data','State', '$location' ,function ($scope, $http, $routeParams, Data,State, $location) {
 
     $scope.user = Data;
     $scope.isDeleteButtonVisible = false;
+    State.TrempistSearchActive = true;
 
     $http.get('/getTrempers').success(function(data) {
         $scope.trempers = data;
@@ -20,19 +21,21 @@ tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$
 
         $http.post('/deleteTremper', $scope.trempers[$scope.whichItem]).
             then(function(response) {
-                window.alert("Post removed");
-        }, function(response) {
-            window.alert("Error: " + response.data);
-        });
+                alertify.log("Post Removed");
+            }, function(response) {
+                alertify.log("Error: " + response.data);
+            });
 
         $location.path("/trempist");
     };
 }]);
 
-tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '$routeParams', 'Data', '$location', function ($scope, $http, $routeParams, Data, $location) {
+tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '$routeParams', 'Data','State', '$location', function ($scope, $http, $routeParams, Data,State, $location) {
 
     $scope.user = Data;
     $scope.isDeleteButtonVisible = false;
+     State.TremperSearchActive = true;
+
 
     $http.get('/getTrempists').success(function(data) {
         $scope.trempists = data;
@@ -49,15 +52,30 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
         //};
         $http.post('/deleteTrempist', $scope.trempists[$scope.whichItem]).
             then(function(response) {
-                window.alert("Post removed");
+                alertify.log("Post Removed");
             }, function(response) {
-                window.alert("Error: " + response.data);
+                alertify.log("Error: " + response.data);
             });
 
         $location.path("/tremper");
     };
 }]);
 
+tremperControllers.controller('landingPageController', ['$scope', '$http', '$location', 'Data','State' , '$interval' ,function ($scope, $http, $location, Data,State,$interval) {
+    var decrement = function(){ 
+        $scope.landingPageOff = false;
+    }
+    if(State.landingPageActive){
+        $scope.landingPageOff = true;
+        $interval(decrement,2500,1);
+    }
+      
+    
+
+
+
+
+}]);
 tremperControllers.controller('EmptyController', ['$scope', '$http', '$location', 'Data' ,function ($scope, $http, $location, Data) {}]);
 
 tremperControllers.controller('UserDetailsController', ['$scope', '$http', '$location', 'Data' ,function ($scope, $http, $location, Data) {
@@ -88,9 +106,13 @@ tremperControllers.controller('UserDetailsController', ['$scope', '$http', '$loc
         $scope.updateUser($scope.user, true);
     };
 
+    $scope.userDataEntered = function() {
+        return !(($scope.user.name != '') && ($scope.user.phone != '') && ($scope.user.gender != ''))
+    }
+
 }]);
 
-tremperControllers.controller('TremperController', ['$scope', '$http', '$routeParams', 'Data', function ($scope, $http, $routeParams, Data) {
+tremperControllers.controller('TremperController', ['$scope', '$http', '$routeParams', 'Data','State', function ($scope, $http, $routeParams, Data,State) {
 
 
 
@@ -100,6 +122,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
 
         $scope.whichItem = $routeParams.itemId;
     });
+    State.landingPageActive = false;
 
     $scope.updateUser = function (user) {
         localStorage.setItem("userName", $scope.myTremper.name);
@@ -109,6 +132,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
         Data.name = $scope.myTremper.name;
         Data.phone = $scope.myTremper.phone;
         Data.gender = $scope.myTremper.gender;
+        alertify.log("Details Saved");
     };
 
     $scope.user = Data;
@@ -127,7 +151,28 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
         minutes : $scope.datetime.getMinutes() + 1,
         date : $scope.datetime,
         time : ''
-    }
+    };
+
+    if (localStorage.getItem("userDetailsSet") != null) {
+        $scope.myTremper.name = localStorage.getItem("userName");
+        $scope.myTremper.phone = localStorage.getItem("userPhone");
+        $scope.myTremper.gender = localStorage.getItem("userGender");
+    };
+
+
+    $scope.TremperActive = false;
+    $scope.TremperSearchActive = State.TremperSearchActive;
+    $scope.TremperUserUpdate = false;
+
+
+    $scope.trempDataEntered = function() {
+        return !(($scope.myTremper.from != '') && ($scope.myTremper.to != ''));
+    };
+
+    $scope.userDataEntered = function() {
+        return !(($scope.myTremper.name != '') && ($scope.myTremper.phone != '') && ($scope.myTremper.gender != ''));
+    };
+
 
     $scope.updateTremperList = function(myTremper) {
         myTremper.time = new Date(myTremper.date.getFullYear(), myTremper.date.getMonth(), myTremper.date.getDate(), myTremper.hour, myTremper.minutes, 0,0);
@@ -137,7 +182,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
         else {
             $http.post('/newTremper', $scope.myTremper).
                 then(function(response) {
-                    alertify.log("Post added");
+                    alertify.log("Post Added");
                 }, function(response) {
                     alertify.log("Error: " + response.data);
                 });
@@ -146,7 +191,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
     };
 }]);
 
-tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeParams', 'Data' ,function ($scope, $http, $routeParams, Data) {
+tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeParams', 'Data' ,'State',function ($scope, $http, $routeParams, Data,State) {
 
     $http.get('/getTrempers').success(function(data) {
         $scope.trempers = data;
@@ -154,7 +199,7 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
 
         $scope.whichItem = $routeParams.itemId;
     });
-
+    State.landingPageActive = false;
     $scope.updateUser = function (user) {
         localStorage.setItem("userName", $scope.myTrempist.name);
         localStorage.setItem("userPhone", $scope.myTrempist.phone);
@@ -163,6 +208,7 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
         Data.name = $scope.myTrempist.name;
         Data.phone = $scope.myTrempist.phone;
         Data.gender = $scope.myTrempist.gender;
+        alertify.log("Details Saved");
     };
 
     $scope.user = Data;
@@ -181,6 +227,24 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
         minutes : $scope.datetime.getMinutes() + 1,
         date : $scope.datetime,
         time : ''
+    };
+
+    if (localStorage.getItem("userDetailsSet") != null) {
+        $scope.myTrempist.name = localStorage.getItem("userName");
+        $scope.myTrempist.phone = localStorage.getItem("userPhone");
+        $scope.myTrempist.gender = localStorage.getItem("userGender");
+    };
+
+    $scope.TrempistActive = false;
+    $scope.TrempistUserUpdate = false;
+    $scope.TrempistSearchActive = State.TrempistSearchActive;
+
+    $scope.trempDataEntered = function() {
+        return !(($scope.myTrempist.from != '') && ($scope.myTrempist.to != ''));
+    }
+
+    $scope.userDataEntered = function() {
+        return !(($scope.myTrempist.name != '') && ($scope.myTrempist.phone != '') && ($scope.myTrempist.gender != ''));
     }
 
     $scope.updateTrempistsList = function(myTrempist) {
@@ -191,10 +255,10 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
         else {
             $http.post('/newTrempist', $scope.myTrempist).
                 then(function(response) {
-                    alertify.log("Post added");
+                    alertify.log("Post Added");
                 }, function(response) {
                     alertify.log("Error: " + response);
-            });
+                });
         }
 
     };

@@ -1,5 +1,9 @@
 <section class="typeselect">
-    <div class="select">
+
+    <div ng-controller="landingPageController" ng-hide ="!landingPageOff">
+        <img ng-src = "images/landing_img.png" style="width:50%;height:50%; display:block; margin-left: auto; margin-right: auto;">
+    </div> 
+    <div class="select" ng-hide = "landingPageOff">
         <h1>What are you?</h1>
         <div class="select_imgs">
             <table>
@@ -10,12 +14,12 @@
                 <tr>
                     <td>
                         <a href="#/trempist">
-                            <img src="images/TrempistIconNew.png" class="select_img"/>
+                            <img ng-src="images/TrempistIconNew.png" class="select_img"/>
                         </a>
                     </td>
                     <td>
                         <a href="#/tremper">
-                            <img src="images/TremperIconNew.png" class="select_img"/>
+                            <img ng-src="images/TremperIconNew.png" class="select_img"/>
                         </a>
                     </td>
 
