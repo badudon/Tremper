@@ -17,7 +17,7 @@ module.exports = {
         });
     },
     addTremper: function (data, callback) {
-        db.trempers.insert(tremper, function (err) {
+        db.trempers.insert(data, function (err) {
             callback(err);
         });
     },
