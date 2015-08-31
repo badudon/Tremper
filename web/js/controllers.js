@@ -9,6 +9,7 @@ tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$
     $scope.isDeleteButtonVisible = false;
     State.TrempistSearchActive = true;
 
+
     $http.get('/getTrempers').success(function(data) {
         $scope.trempers = data;
         $scope.whichItem = $routeParams.itemId;
@@ -61,6 +62,7 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
     };
 }]);
 
+<<<<<<< HEAD
 tremperControllers.controller('landingPageController', ['$scope', '$http', '$location', 'Data','State' , '$interval' ,function ($scope, $http, $location, Data,State,$interval) {
     var decrement = function(){ 
         $scope.landingPageOff = false;
@@ -71,6 +73,15 @@ tremperControllers.controller('landingPageController', ['$scope', '$http', '$loc
     }
       
     
+=======
+tremperControllers.controller('landingPageController', ['$scope', '$http', '$location', 'Data' , '$interval' ,function ($scope, $http, $location, Data,$interval) {
+    var decrement = function(){
+        $scope.landingPageOff = false;
+    }
+
+    $scope.landingPageOff = true;
+    $interval(decrement,2500,1);
+>>>>>>> aryeh1/master
 
 
 
@@ -124,6 +135,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
     });
     State.landingPageActive = false;
 
+
     $scope.updateUser = function (user) {
         localStorage.setItem("userName", $scope.myTremper.name);
         localStorage.setItem("userPhone", $scope.myTremper.phone);
@@ -161,10 +173,16 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
 
 
     $scope.TremperActive = false;
+<<<<<<< HEAD
     $scope.TremperSearchActive = State.TremperSearchActive;
     $scope.TremperUserUpdate = false;
 
 
+=======
+    $scope.TremperSearchActive = false;
+    $scope.TremperUserUpdate = false;
+
+>>>>>>> aryeh1/master
     $scope.trempDataEntered = function() {
         return !(($scope.myTremper.from != '') && ($scope.myTremper.to != ''));
     };
@@ -236,8 +254,13 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
     };
 
     $scope.TrempistActive = false;
+<<<<<<< HEAD
     $scope.TrempistUserUpdate = false;
     $scope.TrempistSearchActive = State.TrempistSearchActive;
+=======
+    $scope.TrempistSearchActive = false;
+    $scope.TrempistUserUpdate = false;
+>>>>>>> aryeh1/master
 
     $scope.trempDataEntered = function() {
         return !(($scope.myTrempist.from != '') && ($scope.myTrempist.to != ''));

@@ -69,6 +69,7 @@
         </div>
         <div ng-hide="!TremperSearchActive"  class="newTrempSlide">
                 <table class="center">
+<<<<<<< HEAD
 
                     <tr>
                         <td><h3>From</h3></td>
@@ -105,6 +106,43 @@
         <div  class = "bus_stop_img">
             <img ng-src="images/bus_stop.png"/>
 
+=======
+
+                    <tr>
+                        <td><h3>From</h3></td>
+                        <td><label>search: </label>
+                            <input ng-model="fromQuery" placeholder="Search Origin"></td>
+                    </tr>
+                    <tr>
+                        <td><h3>To</h3></td>
+                        <td><label>search: </label>
+                            <input ng-model="toQuery" placeholder="Search Destination"></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Details</h3></td>
+                        <td><label>search: </label>
+                            <input ng-model="detailsQuery" placeholder="Search Details"></td>
+                    </tr>
+                </table>
+                <br/>
+                    <ul class="tremperlist">
+                        <li ng-animate="'animate'" class="tremper cf" ng-repeat="trempist in trempists | filter:{to: toQuery} |
+                        filter:{from: fromQuery} | filter:{details: detailsQuery} | orderBy: '-time'">
+                            <a href="#/details_trempist/{{trempists.indexOf(trempist)}}">
+                                <div class="info">
+                                    <h2>{{trempist.from }} -> {{trempist.to}}</h2>
+                                    <h3>{{trempist.time | date: 'EEEE HH:mm'}}</h3>
+                                    <h3>{{trempist.time | date: 'dd/MM/yyyy'}}</h3>
+                                    <h3>{{trempist.name}}</h3>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <div  class = "bus_stop_img">
+            <img ng-src="images/bus_stop.png"/>
+>>>>>>> aryeh1/master
         </div>
         <div style = "text-align: center ;" >
           <a href= "#/typeSelect">&laquo; Back to Main</a>
