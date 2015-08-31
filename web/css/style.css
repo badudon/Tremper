@@ -428,7 +428,8 @@ a.small {
 .tremper {
     background: #063642;
     color: #EEE8D5;
-
+    /* Aryeh */
+    width: 90%;
     min-width: 320px;
     max-width: 500px;
     margin: 0 auto;
