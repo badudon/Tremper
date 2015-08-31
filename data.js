@@ -1,10 +1,10 @@
-// init database
+// Init database
 var Datastore = require('nedb');
 db = {};
 db.trempists = new Datastore({filename: './data/trempists.db', autoload: true });
 db.trempers = new Datastore({filename: './data/trempers.db', autoload: true });
 
-// module functions to call from server
+// Module functions to call from server
 module.exports = {
     getTrempers: function (callback) {
         db.trempers.find({}, function (err, docs) {
@@ -13,31 +13,26 @@ module.exports = {
     },
     getTrempists: function (callback) {
         db.trempists.find({}, function (err, docs) {
-            //console.log("sending data to server")
             callback(err, docs);
         });
     },
-    addTremper: function (object, callback) {
-        db.trempers.insert(object, function (err) {
-            callback(err);
-        });
-        //trempers.push(object);
-        //return trempers;
-    },
-    addTrempist: function (object, callback) {
-        db.trempists.insert(object, function (err) {
-            callback(err);
-        });
-        //trempists.push(object);
-        //return trempists;
-    },
-    deleteTremper: function (obj, callback) {
-        db.trempers.remove({_id: obj._id}, {}, function (err, numRemoved) {
+    addTremper: function (data, callback) {
+        db.trempers.insert(tremper, function (err) {
             callback(err);
         });
     },
-    deleteTrempist: function (obj, callback) {
-        db.trempists.remove({_id: obj._id}, {}, function (err, numRemoved) {
+    addTrempist: function (data, callback) {
+        db.trempists.insert(data, function (err) {
+            callback(err);
+        });
+    },
+    deleteTremper: function (data, callback) {
+        db.trempers.remove({_id: data._id}, {}, function (err, numRemoved) {
+            callback(err);
+        });
+    },
+    deleteTrempist: function (data, callback) {
+        db.trempists.remove({_id: data._id}, {}, function (err, numRemoved) {
             callback(err);
         });
     }
@@ -69,7 +64,7 @@ var clean = function() {
         }
     });
 
-    // 900000 MS = 15 minutes
-    setTimeout(clean, 900000);
+    // 1800000 MS = 30 minutes
+    setTimeout(clean, 1800000);
 }
-setTimeout(clean, 900000);
+setTimeout(clean, 1800000);
