@@ -489,7 +489,7 @@ a.small {
   height: auto;
   min-height: 20px;
   transition:height 0.35s ease;
-  overflow:hidden;
+  /*overflow:hidden;*/
   position:relative;
 }
 .newTrempSlide.ng-hide-remove,
