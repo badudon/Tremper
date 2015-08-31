@@ -21,10 +21,10 @@ tremperControllers.controller('TremperDetailsController', ['$scope', '$http', '$
 
         $http.post('/deleteTremper', $scope.trempers[$scope.whichItem]).
             then(function(response) {
-                window.alert("Post removed");
-        }, function(response) {
-            window.alert("Error: " + response.data);
-        });
+                alertify.log("Post Removed");
+            }, function(response) {
+                alertify.log("Error: " + response.data);
+            });
 
         $location.path("/trempist");
     };
@@ -50,9 +50,9 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
         //};
         $http.post('/deleteTrempist', $scope.trempists[$scope.whichItem]).
             then(function(response) {
-                window.alert("Post removed");
+                alertify.log("Post Removed");
             }, function(response) {
-                window.alert("Error: " + response.data);
+                alertify.log("Error: " + response.data);
             });
 
         $location.path("/tremper");
@@ -60,14 +60,14 @@ tremperControllers.controller('TrempistDetailsController', ['$scope', '$http', '
 }]);
 
 tremperControllers.controller('landingPageController', ['$scope', '$http', '$location', 'Data' , '$interval' ,function ($scope, $http, $location, Data,$interval) {
-   var decrement = function(){
+    var decrement = function(){
         $scope.landingPageOff = false;
-   } 
-   
-   $scope.landingPageOff = true;
-   $interval(decrement,2500,1);
-  
-   
+    }
+
+    $scope.landingPageOff = true;
+    $interval(decrement,2500,1);
+
+
 
 
 }]);
@@ -176,7 +176,7 @@ tremperControllers.controller('TremperController', ['$scope', '$http', '$routePa
         else {
             $http.post('/newTremper', $scope.myTremper).
                 then(function(response) {
-                    alertify.log("Post added");
+                    alertify.log("Post Added");
                 }, function(response) {
                     alertify.log("Error: " + response.data);
                 });
@@ -249,10 +249,10 @@ tremperControllers.controller('TrempistController', ['$scope', '$http', '$routeP
         else {
             $http.post('/newTrempist', $scope.myTrempist).
                 then(function(response) {
-                    alertify.log("Post added");
+                    alertify.log("Post Added");
                 }, function(response) {
                     alertify.log("Error: " + response);
-            });
+                });
         }
 
     };
