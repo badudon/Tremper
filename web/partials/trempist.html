@@ -5,25 +5,7 @@
        </div>
        <div ng-hide="!TrempistActive"  class="newTrempistSlide"
             <form class="simple-form">
-                <table class="center">
-                    <tr>
-                        <td><h3>Name</h3></td>
-                        <td><input type="text" ng-model="myTrempist.name"/></td>
-                    </tr>
-                    <tr>
-                        <td><h3>Phone</h3></td>
-                        <td><input type="tel" ng-model="myTrempist.phone" /></td>
-                    </tr>
-                </table>
-                <table class="center">
-                    <tr>
-                        <td><h3>Gender</h3></td>
-                        <td><input type="radio" ng-model="myTrempist.gender" value="male" />Male</td>
-                        <td><input type="radio" ng-model="myTrempist.gender" value="female" />Female</td>
-                    </tr>
-                </table>
-                <input type="submit" ng-click="updateUser(user)" value="Save Details" />
-                <br/><br/>
+                <br/>
                 <table class="center">
                     <tr>
                         <td><h3>From</h3></td>
@@ -47,17 +29,46 @@
                             : <input type="number" ng-model="myTrempist.minutes" min="0" max="59"/></td>
                     </tr>
                     </table>
-                <input type="submit" ng-click="updateTrempistsList(myTrempist)" value="Continue" />
+                <input type="submit" ng-click="updateTrempistsList(myTrempist)" value="Continue" ng-disabled="trempDataEntered()"/>
+
+                <br/><br/>
+                <div ng-click="TrempistUserUpdate = !TrempistUserUpdate">
+                    <h2>Update Your Details</h2><br/>
+                </div>
+                <div ng-hide="!TrempistUserUpdate">
+
+
+                    <table class="center">
+                        <tr>
+                            <td><h3>Name</h3></td>
+                            <td><input type="text" ng-model="myTrempist.name" /></td>
+                        </tr>
+                        <tr>
+                            <td><h3>Phone</h3></td>
+                            <td><input type="tel" ng-model="myTrempist.phone" /></td>
+                        </tr>
+                    </table>
+                    <table class="center">
+                        <tr>
+                            <td><h3>Gender</h3></td>
+                            <td><input type="radio" ng-model="myTrempist.gender" value="male" />Male</td>
+                            <td><input type="radio" ng-model="myTrempist.gender" value="female" />Female</td>
+                        </tr>
+                    </table>
+
+
+                    <input type="submit" ng-click="updateUser(user)" value="Save Details" ng-disabled="userDataEntered()"/>
+                </div>
             </form>
         </div>
     </div>
 </section>
 <section class="tremperpage">
             <div class="search">
-                <div ng-click ="TremperSearchActive = !TremperSearchActive" class ="TrempistHeadLine">
-                    <h1>   Tremper Search   </h1>
+                <div ng-click ="TrempistSearchActive = !TrempistSearchActive" class ="TrempistHeadLine">
+                    <h1>   Search For a Tremper   </h1>
                 </div>
-                <div ng-hide ="!TremperSearchActive" class = "newTrempistSlide">
+                <div ng-hide ="!TrempistSearchActive" class = "newTrempistSlide">
                     <table class="center">
 
                         <tr>
@@ -76,25 +87,23 @@
                                 <input ng-model="detailsQuery" placeholder="Search Details"></td>
                         </tr>
                     </table>
+                    <br/>
+                    <ul class="tremperlist">
+                        <li ng-animate="'animate'" class="tremper cf" ng-repeat="tremper in trempers | filter:{to: toQuery} |
+                    filter:{from: fromQuery} | filter:{details: detailsQuery} |orderBy: '-time'">
+                            <a href="#/details_tremper/{{trempers.indexOf(tremper)}}">
+                                <div class="info">
+                                    <h2>{{tremper.from }} -> {{tremper.to}}</h2>
+                                    <h3>{{tremper.time | date: 'EEEE HH:mm'}}</h3>
+                                    <h3>{{tremper.time | date: 'dd/MM/yyyy'}}</h3>
+                                    <h3>{{tremper.name}}</h3>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div >
             </div>
-            <div ng-hide ="!TremperSearchActive" class = "newTrempistSlide">
-                <ul class="tremperlist">
-                    <li ng-animate="'animate'" class="tremper cf" ng-repeat="tremper in trempers | filter:{to: toQuery} |
-                    filter:{from: fromQuery} | filter:{details: detailsQuery} |orderBy: '-time'">
-                        <a href="#/details_tremper/{{trempers.indexOf(tremper)}}">
-                            <div class="info">
-                                <h2>{{tremper.name }}</h2>
-                                <h3>{{tremper.from}}</h3>
-                                <h3>{{tremper.to | filter: toQuery}}</h3>
-                                <h3>{{tremper.time | date: 'EEEE HH:mm'}}</h3>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div  class = "car_img">
-            <h1>  </h1>
-            <img src="images/car.png"/>
-           </div>
+    <div  class = "car_img">
+        <img ng-src="images/car.png"/>
+    </div>
 </section>

@@ -1,10 +1,11 @@
 <section class="tremperinfo">
     <div class="tremper cf" ng-model="trempers">
-        <h1 style="text-transform: capitalize">{{trempers[whichItem].name}}, {{trempers[whichItem].gender | filter: 'name'}}</h1>
+        <h1 style="text-transform: capitalize">{{trempers[whichItem].from}} -> {{trempers[whichItem].to}}</h1>
+        <br/>
         <div class="info">
             <h3>{{trempers[whichItem].time | date : 'EEEE HH:mm'}}</h3>
-            <h3 style="text-transform: capitalize">{{trempers[whichItem].from}}</h3>
-            <h3 style="text-transform: capitalize">{{trempers[whichItem].to}}</h3>
+            <h3>{{trempers[whichItem].time | date : 'dd/MM/yyyy'}}</h3>
+            <h3 style="text-transform: capitalize">{{trempers[whichItem].name}}, {{trempers[whichItem].gender | filter: 'name'}}</h3>
             <h3 style="text-transform: capitalize">{{trempers[whichItem].details}}</h3>
             <a href="tel:{{trempers[whichItem].phone}}">Call Tremper</a>
             <br/>

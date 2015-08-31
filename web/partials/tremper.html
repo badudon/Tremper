@@ -5,27 +5,7 @@
          </div>
          <div ng-hide="!TremperActive"  class="newTrempSlide">  
                     <form class="simple-form">
-                        <table class="center">
-                            <tr>
-                                <td><h3>Name</h3></td>
-                                <td><input type="text" ng-model="myTremper.name" /></td>
-                            </tr>
-                            <tr>
-                                <td><h3>Phone</h3></td>
-                                <td><input type="tel" ng-model="myTremper.phone" /></td>
-                            </tr>
-                        </table>
-                        <table class="center">
-                            <tr>
-                                <td><h3>Gender</h3></td>
-                                <td><input type="radio" ng-model="myTremper.gender" value="male" />Male</td>
-                                <td><input type="radio" ng-model="myTremper.gender" value="female" />Female</td>
-                            </tr>
-                        </table>
-
-
-                        <input type="submit" ng-click="updateUser(user)" value="Save Details" />
-                        <br/><br/>
+                        <br/>
                         <table class="center">
                             <tr>
                                 <td><h3>From</h3></td>
@@ -49,17 +29,45 @@
                                     : <input type="number" ng-model="myTremper.minutes" min="0" max="59"/></td>
                             </tr>
                         </table>
-                        <input type="submit" ng-click="updateTremperList(myTremper)" value="Post" />
+                        <input type="submit" ng-click="updateTremperList(myTremper)" value="Post" ng-disabled="trempDataEntered()"/>
+                        <br/><br/>
+                        <div ng-click="TremperUserUpdate = !TremperUserUpdate">
+                            <h2>Update Your Details</h2><br/>
+                        </div>
+                        <div ng-hide="!TremperUserUpdate">
+
+
+                            <table class="center">
+                                <tr>
+                                    <td><h3>Name</h3></td>
+                                    <td><input type="text" ng-model="myTremper.name" /></td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Phone</h3></td>
+                                    <td><input type="tel" ng-model="myTremper.phone" /></td>
+                                </tr>
+                            </table>
+                            <table class="center">
+                                <tr>
+                                    <td><h3>Gender</h3></td>
+                                    <td><input type="radio" ng-model="myTremper.gender" value="male" />Male</td>
+                                    <td><input type="radio" ng-model="myTremper.gender" value="female" />Female</td>
+                                </tr>
+                            </table>
+
+
+                            <input type="submit" ng-click="updateUser(user)" value="Save Details" ng-disabled="userDataEntered()"/>
+                        </div>
                     </form>
            </div>
     </div>
 </section>
 <section class="tremperpage">
     <div class="search">
-        <div ng-click="TrempistSearchActive = !TrempistSearchActive "class="tremperHeadLine">
+        <div ng-click="TremperSearchActive = !TremperSearchActive "class="tremperHeadLine">
         <h1>Search For a Trempist</h1>
         </div>
-        <div ng-hide="!TrempistSearchActive"  class="newTrempSlide">  
+        <div ng-hide="!TremperSearchActive"  class="newTrempSlide">
                 <table class="center">
 
                     <tr>
@@ -86,6 +94,7 @@
                                 <div class="info">
                                     <h2>{{trempist.from }} -> {{trempist.to}}</h2>
                                     <h3>{{trempist.time | date: 'EEEE HH:mm'}}</h3>
+                                    <h3>{{trempist.time | date: 'dd/MM/yyyy'}}</h3>
                                     <h3>{{trempist.name}}</h3>
                                 </div>
                             </a>
@@ -94,7 +103,6 @@
             </div>
         </div>
         <div  class = "bus_stop_img">
-            <h1>  </h1>
-            <img src="images/bus_stop.png"/>
+            <img ng-src="images/bus_stop.png"/>
         </div>
 </section>
